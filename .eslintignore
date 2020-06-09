@@ -1,0 +1,7 @@
+public/
+src/assets/
+test/
+dist/
+node_modules/
+src/**/*.html
+static/
