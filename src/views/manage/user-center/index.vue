@@ -68,7 +68,6 @@
             initBScroll () {
                 this.$nextTick(() => {
                     if (this.bscroll) {
-                        console.log('@refresh')
                         this.bscroll.refresh()
                         return
                     }

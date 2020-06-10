@@ -1,20 +1,12 @@
 <template>
-    <div class="manage-view">
-        <manage-header/>
-        <div class="router-view-wrap">
-            <keep-alive>
-                <router-view/>
-            </keep-alive>
-        </div>
+    <div class="the-audio-view">
+        audio
     </div>
 </template>
 
 <script>
-    import ManageHeader from '@/components/manage/header'
-
     export default {
         components: {
-            ManageHeader
         },
         props: {
         },
@@ -34,15 +26,13 @@
 </script>
 
 <style lang="scss" scoped>
-    .manage-view {
+    .the-audio-view {
         width: 100%;
-        height: 100%;
-    }
-
-    .router-view-wrap {
-        width: 100%;
-        height: 100%;
         box-sizing: border-box;
-        padding-top: 100px;
+        padding: 50px 30px 50px 34px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
     }
 </style>

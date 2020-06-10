@@ -448,7 +448,7 @@
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
-                height: 40px;
+                height: 50px;
 
                 p {
                     font-size: 16px;
@@ -585,5 +585,42 @@
         &:after {
             margin-left: -28px !important;
         }
+    }
+
+    .detail-item {
+
+        .el-input__inner {
+            width: 160px !important;
+            height: 40px !important;
+            padding: 0 10px !important;
+            font-size: 14px;
+            font-family: PingFangSC-Regular,PingFang SC;
+            font-weight: 400;
+            color: rgba(46,51,65,1);
+        }
+
+        .el-select__caret {
+            height: 40px !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .el-color-picker {
+            height: 40px !important;
+        }
+
+        .el-color-picker__trigger {
+            width: 160px !important;
+            height: 40px !important;
+        }
+    }
+
+    .el-select-dropdown__item {
+        font-size: 14px;
+        font-family: PingFangSC-Regular,PingFang SC;
+        font-weight: 400;
+        color: rgba(46,51,65,1);
     }
 </style>

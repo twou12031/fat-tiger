@@ -66,7 +66,7 @@ const allRoutes = [
                 ]
             },
             {
-                path: '/manage/videoFactory',
+                path: '/manage/videoFactory/:tabIndex?',
                 name: 'videoFactory',
                 component: () => {
                     return import('@/views/manage/video-factory')

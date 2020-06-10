@@ -21,7 +21,7 @@
                     <button v-for="(item,index) in moreActives"
                             :key="index"
                             @click="moreActivesClick(item)">
-                        {{ langTransfer(item.text) }}
+                        {{ item.text }}
                     </button>
                 </div>
             </div>
