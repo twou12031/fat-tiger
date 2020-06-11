@@ -95,7 +95,7 @@
         height: 140px;
         box-shadow: 0px 0px 30px 0px rgba(223,223,223,0.3);
         position: relative;
-        margin-bottom: 10px;
+        margin: 5px 0;
 
         .res-cover {
             width: 100%;

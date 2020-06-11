@@ -1,55 +1,48 @@
 <template>
     <div class="the-video-view">
-        <div class="tabs-mask">
-            <div v-for="(item,index) in tabs"
-                 :key="index"
-                 :class="{'actived-tab': checkedTabIndex === index}"
-                 class="tab-item"
-                 @click="tabClick(index)">
-                {{ item.name }}
-            </div>
-        </div>
-        <div class="header">
-            <div class="search-mask">
-                <img src="https://images.pexels.com/photos/4321944/pexels-photo-4321944.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                <input v-model="searchVal"
-                       type="search"
-                       placeholder="视频和图片搜索">
-            </div>
-            <img src="https://images.pexels.com/photos/4321944/pexels-photo-4321944.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-        </div>
-        <div ref="keywordsListWrap"
-             :class="{'show-keyword-list': searchVal }"
-             class="keywords-list-wrap">
-            <div class="keywords-list">
-                <div v-for="(item,index) in 10"
-                     :key="index"
-                     class="keyword-item">
-                    {{ String.fromCharCode((64+item)) }}
-                </div>
-            </div>
-        </div>
+        <tabs :tabs="tabs"
+              :checked-tab-index="checkedTabIndex"
+              @changeTab="tabClickHandler"/>
+        <search-filter @changeKeyword="keywordChangeHandler"/>
         <div :class="{'list-on-top': searchVal}"
              class="tab-detail">
             <div v-if="checkedTabIndex === 0"
-                 class="detail-resource">
-                <res-list :list="[1,1,1,1,1,1,1,1,1,1,1,1,]"/>
+                 class="detail-body detail-resource">
+                <video-list
+                    key="0"
+                    ref="detailResList"
+                    :list="[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,11,1,1,1,1,11,1,1,1,1,1]"/>
             </div>
             <div v-if="checkedTabIndex === 1"
-                 class="detail-gifs">
-                GIFs
+                 class="detail-body detail-gifs">
+                <video-list
+                    key="1"
+                    ref="detailResList"
+                    :list="[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,11,1,1,1,1,11,1,1,1,1,1]"/>
             </div>
             <div v-if="checkedTabIndex === 2"
-                 class="detail-upload">
-                上传
+                 class="detail-body detail-upload">
+                <button class="upload-btn">上传图片或视频</button>
+                <video-list
+                    key="2"
+                    ref="detailResList"
+                    :list="[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,11,1,1,1,1,11,1,1,1,1,1]"/>
             </div>
             <div v-if="checkedTabIndex === 3"
-                 class="detail-recent">
-                最近使用
+                 class="detail-body detail-recent">
+                <video-list
+                    key="3"
+                    ref="detailResList"
+                    :list="[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,11,1,1,1,1,11,1,1,1,1,1]"/>
             </div>
             <div v-if="checkedTabIndex === 4"
-                 class="detail-collection">
-                收藏
+                 class="detail-body detail-collection">
+                <video-list
+                    key="4"
+                    ref="detailResList"
+                    :list="[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                            1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                            1,1,1,1,1,1,1,1,1,1,1,1,1,11,1,1,1,1,11,1,1,1,1,1]"/>
             </div>
         </div>
     </div>
@@ -57,17 +50,21 @@
 
 <script>
     import BScroll from 'better-scroll'
-    import ResList from './res-list'
+    import Tabs from './common/tabs'
+    import SearchFilter from './common/search-filter'
+    import VideoList from './common/video-list'
 
     export default {
         components: {
-            ResList
+            Tabs,
+            VideoList,
+            SearchFilter
         },
         props: {
         },
         data () {
             return {
-                checkedTabIndex: 0,
+                checkedTabIndex: 2,
                 tabs: [
                     {
                         name: '资源',
@@ -92,15 +89,27 @@
         },
         computed: {
         },
+        watch: {
+            searchVal (newVal, oldVal) {
+                if (newVal === '' || oldVal === '') {
+                    const { detailResList } = this.$refs
+                    detailResList.initBScroll()
+                }
+            }
+        },
         mounted () {
             this.initKeywordsListBScroll()
         },
         methods: {
-            tabClick (index) {
+            tabClickHandler (index) {
                 if (this.checkedTabIndex === index) {
                     return
                 }
                 this.checkedTabIndex = index
+            },
+            keywordChangeHandler (val) {
+                console.log(val)
+                this.searchVal = val
             },
             initKeywordsListBScroll () {
                 this.$nextTick(() => {
@@ -154,7 +163,7 @@
     }
 
     .tab-item {
-        width: 20%;
+        width: 102px;
         height: 28px;
         margin-bottom: 10px;
         font-size: 20px;
@@ -196,6 +205,7 @@
 
     .header {
         width: 510px;
+        height: 50px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -211,10 +221,11 @@
     }
 
     .search-mask {
-        width: 420px;
+        width: 380px;
         box-sizing: border-box;
         background: rgba(255,255,255,1);
-        border-radius: 10px;
+        border-radius: 50px;
+        overflow: hidden;
         border: 1px solid rgba(223,223,223,1);
         display: flex;
         flex-direction: row;
@@ -246,7 +257,7 @@
     }
 
     .keywords-list-wrap {
-        width: 100%;
+        width: 510px;
         max-height: 0;
         overflow: hidden;
         transition: all .2s;
@@ -268,6 +279,7 @@
         .keyword-item {
             width: 83px;
             height: 20px;
+            border-radius: 20px;
             padding: 6px 9px 8px 33px;
             font-size: 14px;
             font-family: PingFangSC-Regular,PingFang SC;
@@ -277,6 +289,7 @@
             background: #F2F2F2;
             margin-right: 10px;
             overflow: hidden;
+            cursor: pointer;
 
             &:last-child {
                 margin-right: 0;
@@ -300,7 +313,7 @@
         height: calc(100% - 39px - 20px - 52px - 10px - 34px);
     }
 
-    .detail-resource {
+    .detail-body {
         width: 100%;
         height: 100%;
         display: flex;
@@ -310,6 +323,25 @@
 
         .res-list-wrap {
             height: 100%;
+        }
+    }
+
+    .detail-upload {
+
+        .upload-btn {
+            width: 220px;
+            height: 50px;
+            background: rgba(219,177,101,1);
+            border-radius: 45px;
+            margin: 30px auto 20px;
+            font-size: 18px;
+            font-family: PingFangSC-Regular,PingFang SC;
+            font-weight: 400;
+            color: rgba(255,255,255,1);
+        }
+
+        .res-list-wrap {
+            height: calc(100% - 100px);
         }
     }
 </style>
