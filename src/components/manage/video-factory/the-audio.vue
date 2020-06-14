@@ -10,20 +10,35 @@
             <div v-if="checkedTabIndex === 0"
                  class="detail-body detail-resource">
                 <div class="checked-bgm">
-                    123
+                    <div v-if="!checkedBgmItem" class="empty-bgm">
+                        单击您要添加的曲目
+                    </div>
+                    <div v-else class="checked-bgm-detail">
+                        <img class="status-icon" src="https://images.pexels.com/photos/4273439/pexels-photo-4273439.jpeg?auto=compress&cs=tinysrgb&dpr=1">
+                        <div class="res-summary-mask">
+                            <h6 class="text1line">Tarnished</h6>
+                            <p class="text1line">indie . rock</p>
+                        </div>
+                        <img class="wavez-icon" src="https://images.pexels.com/photos/3860667/pexels-photo-3860667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                        <b class="current-time">0:00</b>
+                        <b class="bgm-duration">0:56</b>
+                        <img class="cancel-check-icon"
+                             src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                             @click="checkedBgmItem = undefined">
+                    </div>
                 </div>
-                <div class="bgm-list">
-                    <div class="bgm-volume-mask">
-                        <div class="bgm-volume">
-                            <p>配乐音量</p>
-                            <div class="slider-mask">
-                                小
-                                <el-slider v-model="bgmVolume"/>
-                                大
-                            </div>
+                <div class="bgm-volume-mask">
+                    <div class="bgm-volume">
+                        <p>配乐音量</p>
+                        <div class="slider-mask">
+                            小
+                            <el-slider v-model="bgmVolume"/>
+                            大
                         </div>
                     </div>
                 </div>
+                <bgm-list :list="[1,1,1,1,1,1,1]"
+                          @checkBgm="checkbgmHandler"/>
             </div>
             <div v-if="checkedTabIndex === 1"
                  class="detail-body detail-upload">
@@ -56,13 +71,11 @@
                     </div>
                     <div class="opt-item">
                         <p>配音音量</p>
-                        <el-select v-model="value" placeholder="请选择">
-                            <el-option
-                                v-for="item in options"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value"/>
-                        </el-select>
+                        <div class="slider-mask">
+                            小
+                            <el-slider v-model="bgmVolume"/>
+                            大
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,11 +86,13 @@
 <script>
     import Tabs from './common/tabs'
     import SearchFilter from './common/search-filter'
+    import BgmList from './common/bgm-list'
 
     export default {
         components: {
             Tabs,
-            SearchFilter
+            SearchFilter,
+            BgmList
         },
         props: {
         },
@@ -98,7 +113,8 @@
                 ],
                 searchVal: '',
                 value: '',
-                bgmVolume: 0
+                bgmVolume: 50,
+                checkedBgmItem: undefined
             }
         },
         computed: {
@@ -117,6 +133,9 @@
             keywordChangeHandler (val) {
                 console.log(val)
                 this.searchVal = val
+            },
+            checkbgmHandler (item) {
+                this.checkedBgmItem = item
             }
         },
         beforeRouteEnter (to, from, next) {
@@ -213,24 +232,111 @@
     }
 
     .detail-resource {
-        width: 100%;
 
         .checked-bgm {
             width: 510px;
             height: 100px;
-            background: rgba(248,250,253,1);
-            border-radius: 10px;
-            border: 2px solid rgba(223,223,223,1);
             margin: 20px auto;
-        }
 
-        .bgm-list {
-            width: 100%;
+            .empty-bgm {
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                line-height: 96px;
+                background: rgba(248,250,253,1);
+                border-radius: 10px;
+                border: 2px dashed rgba(223,223,223,1);
+            }
+
+            .checked-bgm-detail {
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                padding: 0 30px;
+                background: rgba(248,250,253,1);
+                border-radius: 10px;
+                border: 1px solid rgba(219,177,101,1);
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+                position: relative;
+
+                .status-icon {
+                    width: 46px;
+                    height: 46px;
+                    background: rgba(160,171,191,1);
+                    border-radius: 50%;
+                }
+
+                .res-summary-mask {
+                    width: 180px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: center;
+
+                    h6 {
+                        width: 100%;
+                        height: 28px;
+                        font-size: 20px;
+                        font-family: PingFangSC-Medium,PingFang SC;
+                        font-weight: 500;
+                        color: rgba(46,51,65,1);
+                        line-height: 28px;
+                    }
+
+                    p {
+                        width: 100%;
+                        height: 28px;
+                        font-size: 20px;
+                        font-family: PingFangSC-Light,PingFang SC;
+                        font-weight: 300;
+                        color: rgba(165,165,165,1);
+                        line-height: 28px;
+                    }
+                }
+
+                .wavez-icon {
+                    width: 125px;
+                    height: 59px;
+                }
+
+                b {
+                    display: block;
+                    font-size: 12px;
+                    font-family: PingFangSC-Regular,PingFang SC;
+                    font-weight: 400;
+                    color: rgba(102,102,102,1);
+                    line-height: 17px;
+                    position: absolute;
+                    bottom: 3px;
+                }
+
+                .bgm-duration {
+                    right: 30px;
+                }
+
+                .current-time {
+                    left: 355px;
+                }
+
+                .cancel-check-icon {
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    top: -10px;
+                    right: -10px;
+                    cursor: pointer;
+                }
+            }
         }
 
         .bgm-volume-mask {
             width: 100%;
-            box-shadow: 0px 1px 8px 0px rgba(223,223,223,0.3);
+            box-shadow: 0px 1px 8px 2px rgba(223,223,223,0.3);
         }
 
         .bgm-volume {
@@ -251,17 +357,22 @@
             }
         }
 
-        .slider-mask {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            font-size: 12px;
-            font-family: PingFangSC-Regular,PingFang SC;
-            font-weight: 400;
-            color: rgba(165,165,165,1);
-            line-height: 17px;
+        .res-list-wrap {
+            height: calc(100% - 222px - 20px);
+            margin-top: 20px;
         }
+    }
+
+    .slider-mask {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        font-family: PingFangSC-Regular,PingFang SC;
+        font-weight: 400;
+        color: rgba(165,165,165,1);
+        line-height: 17px;
     }
 
     .detail-voice {
@@ -307,6 +418,10 @@
                     color:rgba(0,97,255,1);
                     line-height:22px;
                 }
+
+                .slider-mask {
+                    margin-right: -26px;
+                }
             }
         }
     }
@@ -345,6 +460,7 @@
             font-weight: 400;
             color: rgba(46,51,65,1);
             border: none !important;
+            box-shadow: 0 0 11px 1px rgba(0,0,0,.1);
         }
 
         .el-select__caret {
@@ -371,7 +487,8 @@
         font-weight: 400;
         color: rgba(46,51,65,1);
     }
-    .bgm-volume {
+
+    .bgm-volume,.opt-item {
 
         .el-slider {
             width: 160px !important;
@@ -381,6 +498,7 @@
         .el-slider__runway {
             width: 160px !important;
             height: 8px !important;
+            background: #A0ABBF;
         }
 
         .el-slider__bar {

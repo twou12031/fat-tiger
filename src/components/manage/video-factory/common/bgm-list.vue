@@ -3,13 +3,15 @@
         <div class="res-list">
             <div v-for="(item,index) in list"
                  :key="index"
-                 class="res-item">
-                <img class="res-cover" src="https://images.pexels.com/photos/4273439/pexels-photo-4273439.jpeg?auto=compress&cs=tinysrgb&dpr=1">
-                <div class="res-content-mask">
-                    <img class="play-icon" src="https://images.pexels.com/photos/3860667/pexels-photo-3860667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                    <p class="free-corner">免费</p>
-                    <img class="collection-icon" src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                 class="res-item"
+                 @click="itemClickHandler">
+                <img class="status-icon" src="https://images.pexels.com/photos/4273439/pexels-photo-4273439.jpeg?auto=compress&cs=tinysrgb&dpr=1">
+                <div class="res-summary-mask">
+                    <h6 class="text1line">Tarnished</h6>
+                    <p class="text1line">indie . rock</p>
                 </div>
+                <img class="wavez-icon" src="https://images.pexels.com/photos/3860667/pexels-photo-3860667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                <b class="bgm-duration">0:56</b>
             </div>
         </div>
     </div>
@@ -69,6 +71,9 @@
                         preventDefault: false
                     })
                 })
+            },
+            itemClickHandler (item) {
+                this.$emit('checkBgm', item)
             }
         }
     }
@@ -85,66 +90,80 @@
         width: 510px;
         margin: 0 auto;
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: flex-start;
         align-items: flex-start;
-        flex-wrap: wrap;
     }
 
     .res-item {
-        width: 250px;
-        height: 140px;
-        box-shadow: 0px 0px 30px 0px rgba(223,223,223,0.3);
-        position: relative;
-        margin: 5px 0;
-
-        .res-cover {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-
-    .res-content-mask {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        background: rgba(0,0,0,0.3);
+        width: 510px;
+        height: 100px;
+        box-sizing: border-box;
+        padding: 0 30px;
+        background: rgba(255,255,255,1);
+        border-radius: 10px;
+        margin-bottom: 30px;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
+        cursor: pointer;
+        position: relative;
 
-        .play-icon {
+        &:hover {
+            background: rgba(248,250,253,1);
+        }
+
+        .status-icon {
             width: 46px;
             height: 46px;
+            background: rgba(160,171,191,1);
             border-radius: 50%;
-            background: rgba(160,171,191,0.8);
         }
 
-        .free-corner {
-            position: absolute;
-            left: 10px;
-            top: 10px;
-            padding: 1px 7px;
-            background: rgba(25,28,61,0.7);
-            border-radius: 4px;
+        .res-summary-mask {
+            width: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+
+            h6 {
+                width: 100%;
+                height: 28px;
+                font-size: 20px;
+                font-family: PingFangSC-Medium,PingFang SC;
+                font-weight: 500;
+                color: rgba(46,51,65,1);
+                line-height: 28px;
+            }
+
+            p {
+                width: 100%;
+                height: 28px;
+                font-size: 20px;
+                font-family: PingFangSC-Light,PingFang SC;
+                font-weight: 300;
+                color: rgba(165,165,165,1);
+                line-height: 28px;
+            }
+        }
+
+        .wavez-icon {
+            width: 174px;
+            height: 59px;
+        }
+
+        .bgm-duration {
+            display: block;
             font-size: 12px;
             font-family: PingFangSC-Regular,PingFang SC;
             font-weight: 400;
-            color: rgba(255,255,255,1);
+            color: rgba(102,102,102,1);
             line-height: 17px;
-        }
-
-        .collection-icon {
             position: absolute;
-            right: 10px;
-            bottom: 10px;
-            width: 20px;
-            height: 20px;
-            background: rgba(255,255,255,1);
+            right: 30px;
+            bottom: 3px;
         }
     }
 </style>

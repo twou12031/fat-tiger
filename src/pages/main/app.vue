@@ -36,18 +36,6 @@
     }
 </script>
 
-<style lang="scss">
-    // body {
-    //     width: 100vw;
-    //     height: 100vh;
-    // }
-
-    #app {
-        width: 100vw;
-        height: 100vh;
-    }
-</style>
-
 
 <style lang="scss" scoped>
     .router-view-wrapper {
@@ -113,6 +101,12 @@
     body {
         background: #f6f6f6;
     }
+
+    #app {
+        width: 100vw;
+        height: 100vh;
+    }
+
     .site-footer {
         width: 100%;
         height: 128px;
@@ -120,10 +114,15 @@
         background-position: center 30px;
         border-top: 1px solid #F0F2F7;
     }
+
     h5 {
         max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
+
+    .popper__arrow {
+        border-bottom-color: #d5d5d6 !important;
     }
 </style>

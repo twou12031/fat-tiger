@@ -17,7 +17,7 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI)
 
-Vue.use(apis) 
+Vue.use(apis)
 Vue.prototype.$tools = tools
 Vue.prototype.$cookies = Cookies
 
