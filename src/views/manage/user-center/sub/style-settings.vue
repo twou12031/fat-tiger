@@ -335,13 +335,13 @@
         &:nth-child(2) {
             width: 590px;
             box-sizing: border-box;
-            padding: 0 40px;
+            padding: 0 40px 20px;
         }
 
         &:nth-child(3) {
             width: 570px;
             box-sizing: border-box;
-            padding: 0 30px;
+            padding: 0 30px 20px;
         }
 
         .settings-mode {
@@ -422,6 +422,8 @@
             box-sizing: border-box;
             padding: 20px;
             margin: 10px auto 0;
+            border-radius: 4px;
+            background: #f8fafd;
 
             .settings-header {
                 height: 25px;

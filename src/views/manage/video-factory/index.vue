@@ -68,7 +68,7 @@
             }
         },
         mounted () {
-            this.initBScroll()
+            // this.initBScroll()
         },
         methods: {
             tabClick (tabIndex) {

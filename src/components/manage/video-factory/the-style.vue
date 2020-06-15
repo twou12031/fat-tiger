@@ -25,177 +25,214 @@
                 </div>
             </div>
         </div>
-        <div class="settings-header">
-            <h5>
-                水印
-                <el-tooltip :hide-after="0"
-                            popper-class="settings-tip"
-                            content="水印将显示在你的视频中"
-                            placement="right">
-                    <img class="tip-icon" src="https://images.pexels.com/photos/4321944/pexels-photo-4321944.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                </el-tooltip>
-            </h5>
-            <div class="settings-val">
-                <img class="vip-icon" src="https://images.pexels.com/photos/4321944/pexels-photo-4321944.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                <el-switch v-model="form.waterMark"
-                           active-color="#E2B461"
-                           inactive-color="#E8E8E8"/>
-            </div>
-        </div>
-        <div class="settings-header">
-            <h5>外观</h5>
-        </div>
-        <div class="look-mask">
-            <div class="look-content">
-                <img src="">
-            </div>
-            <div class="look-tabs">
-                <img src="">
-                <img src="">
-                <img src="">
-                <img src="">
-                <img src="">
-            </div>
-        </div>
-        <div class="settings-header">
-            <h5>
-                风格
-            </h5>
-        </div>
-        <div class="vip-link">
-            VIP提供定制主题服务。查看升级选项
-            <span>></span>
-        </div>
-        <div class="settings-detail">
-            <div class="settings-header">
-                <h5>字体样式</h5>
-            </div>
-            <div class="detail-group">
-                <div class="detail-item">
-                    <p>字体</p>
-                    <el-select v-model="value" placeholder="请选择">
-                        <el-option
-                            v-for="item in options"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"/>
-                    </el-select>
-                </div>
-                <div class="detail-item">
-                    <p>字重</p>
-                    <el-select v-model="value" placeholder="请选择">
-                        <el-option
-                            v-for="item in options"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"/>
-                    </el-select>
-                </div>
-                <div class="detail-item">
-                    <p>字体颜色</p>
-                    <el-color-picker v-model="color1"/>
-                </div>
-                <div class="detail-item">
-                    <p>
-                        突出字体颜色
+        <div class="cutline"/>
+        <div ref="settingsContentWrap" class="settings-content-wrap">
+            <div class="settings-content">
+                <div class="settings-header">
+                    <h5>
+                        水印
                         <el-tooltip :hide-after="0"
                                     popper-class="settings-tip"
                                     content="水印将显示在你的视频中"
                                     placement="right">
                             <img class="tip-icon" src="https://images.pexels.com/photos/4321944/pexels-photo-4321944.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
                         </el-tooltip>
-                    </p>
-                    <el-color-picker v-model="color1"/>
-                </div>
-                <div class="detail-item">
-                    <p>突出字体字重</p>
-                    <el-select v-model="value" placeholder="请选择">
-                        <el-option
-                            v-for="item in options"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"/>
-                    </el-select>
-                </div>
-                <div class="detail-item">
-                    <p>
-                        文本背景颜色
-                        <el-tooltip :hide-after="0"
-                                    popper-class="settings-tip"
-                                    content="水印将显示在你的视频中"
-                                    placement="right">
-                            <img class="tip-icon" src="https://images.pexels.com/photos/4321944/pexels-photo-4321944.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                        </el-tooltip>
-                    </p>
-                    <el-color-picker v-model="color1"/>
-                </div>
-            </div>
-        </div>
-        <div class="settings-detail">
-            <div class="settings-header">
-                <h5>字幕样式</h5>
-            </div>
-            <div class="detail-group">
-                <div class="detail-item">
-                    <p>字体</p>
-                    <el-select v-model="value" placeholder="请选择">
-                        <el-option
-                            v-for="item in options"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"/>
-                    </el-select>
-                </div>
-                <div class="detail-item">
-                    <p>字体颜色</p>
-                    <el-color-picker v-model="color1"/>
-                </div>
-                <div class="detail-item">
-                    <p>
-                        标签突出
-                    </p>
-                    <el-color-picker v-model="color1"/>
-                </div>
-                <div class="detail-item">
-                    <p>
-                        字体背景
-                        <el-tooltip :hide-after="0"
-                                    popper-class="settings-tip"
-                                    content="水印将显示在你的视频中"
-                                    placement="right">
-                            <img class="tip-icon" src="https://images.pexels.com/photos/4321944/pexels-photo-4321944.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                        </el-tooltip>
-                    </p>
-                    <el-color-picker v-model="color1"/>
-                </div>
-            </div>
-        </div>
-        <div class="settings-detail">
-            <div class="settings-header">
-                <h5>背景风格</h5>
-            </div>
-            <div class="detail-group">
-                <div class="detail-item">
-                    <p>原色</p>
-                    <el-color-picker v-model="color1"/>
-                </div>
-                <div class="detail-item">
-                    <p>辅助颜色</p>
-                    <el-color-picker v-model="color1"/>
-                </div>
-            </div>
-        </div>
-        <div class="settings-detail">
-            <div class="settings-header">
-                <h5>转换场景</h5>
-            </div>
-            <div class="detail-group">
-                <div class="detail-item">
-                    <p>可实现</p>
+                    </h5>
                     <div class="settings-val">
+                        <img class="vip-icon" src="https://images.pexels.com/photos/4321944/pexels-photo-4321944.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
                         <el-switch v-model="form.waterMark"
                                    active-color="#E2B461"
                                    inactive-color="#E8E8E8"/>
+                    </div>
+                </div>
+                <div class="cutline"/>
+                <div class="settings-header">
+                    <h5>外观</h5>
+                </div>
+                <div class="settings-section">
+                    <div class="look-mask">
+                        <div class="look-content">
+                            <img src="">
+                        </div>
+                        <div class="look-tabs">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                    <button class="look-more-btn">选择更多主题</button>
+                </div>
+                <div class="cutline"/>
+                <div class="settings-header">
+                    <h5>
+                        风格
+                    </h5>
+                </div>
+                <div class="settings-section">
+                    <div class="vip-link">
+                        VIP提供定制主题服务。查看升级选项
+                        <span>></span>
+                    </div>
+                    <div class="settings-detail">
+                        <div class="settings-header">
+                            <h5>字体样式</h5>
+                        </div>
+                        <div class="detail-group">
+                            <div class="detail-item">
+                                <p>字体</p>
+                                <el-select v-model="value" placeholder="请选择">
+                                    <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value"/>
+                                </el-select>
+                            </div>
+                            <div class="detail-item">
+                                <p>字重</p>
+                                <el-select v-model="value" placeholder="请选择">
+                                    <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value"/>
+                                </el-select>
+                            </div>
+                            <div class="detail-item">
+                                <p>字体颜色</p>
+                                <el-color-picker v-model="color1"/>
+                            </div>
+                            <div class="detail-item">
+                                <p>
+                                    突出字体颜色
+                                    <el-tooltip :hide-after="0"
+                                                popper-class="settings-tip"
+                                                content="水印将显示在你的视频中"
+                                                placement="right">
+                                        <img class="tip-icon" src="https://images.pexels.com/photos/4321944/pexels-photo-4321944.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                                    </el-tooltip>
+                                </p>
+                                <el-color-picker v-model="color1"/>
+                            </div>
+                            <div class="detail-item">
+                                <p>突出字体字重</p>
+                                <el-select v-model="value" placeholder="请选择">
+                                    <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value"/>
+                                </el-select>
+                            </div>
+                            <div class="detail-item">
+                                <p>
+                                    文本背景颜色
+                                    <el-tooltip :hide-after="0"
+                                                popper-class="settings-tip"
+                                                content="水印将显示在你的视频中"
+                                                placement="right">
+                                        <img class="tip-icon" src="https://images.pexels.com/photos/4321944/pexels-photo-4321944.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                                    </el-tooltip>
+                                </p>
+                                <el-color-picker v-model="color1"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-detail">
+                        <div class="settings-header">
+                            <h5>字幕样式</h5>
+                        </div>
+                        <div class="detail-group">
+                            <div class="detail-item">
+                                <p>字体</p>
+                                <el-select v-model="value" placeholder="请选择">
+                                    <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value"/>
+                                </el-select>
+                            </div>
+                            <div class="detail-item">
+                                <p>字体颜色</p>
+                                <el-color-picker v-model="color1"/>
+                            </div>
+                            <div class="detail-item">
+                                <p>
+                                    标签突出
+                                </p>
+                                <el-color-picker v-model="color1"/>
+                            </div>
+                            <div class="detail-item">
+                                <p>
+                                    字体背景
+                                    <el-tooltip :hide-after="0"
+                                                popper-class="settings-tip"
+                                                content="水印将显示在你的视频中"
+                                                placement="right">
+                                        <img class="tip-icon" src="https://images.pexels.com/photos/4321944/pexels-photo-4321944.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                                    </el-tooltip>
+                                </p>
+                                <el-color-picker v-model="color1"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-detail">
+                        <div class="settings-header">
+                            <h5>背景风格</h5>
+                        </div>
+                        <div class="detail-group">
+                            <div class="detail-item">
+                                <p>原色</p>
+                                <el-color-picker v-model="color1"/>
+                            </div>
+                            <div class="detail-item">
+                                <p>辅助颜色</p>
+                                <el-color-picker v-model="color1"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-detail">
+                        <div class="settings-header">
+                            <h5>转换场景</h5>
+                        </div>
+                        <div class="detail-group">
+                            <div class="detail-item">
+                                <p>可实现</p>
+                                <div class="settings-val">
+                                    <el-switch v-model="form.waterMark"
+                                               active-color="#E2B461"
+                                               inactive-color="#E8E8E8"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cutline style-settings-cutline"/>
+                <div class="settings-header">
+                    <h5>
+                        滤镜
+                    </h5>
+                </div>
+                <div class="settings-section">
+                    <div class="filter-cate-list">
+                        <div v-for="(item,index) in 14"
+                             :key="index"
+                             class="filter-cate-item">
+                            {{ parseInt((Math.random()*1000 - 500)) }}
+                        </div>
+                    </div>
+                    <div class="filter-review-list">
+                        <div v-for="(item,index) in 14"
+                             :key="index"
+                             class="filter-review-item"
+                        >
+                            <img class="cover" src="https://images.pexels.com/photos/749114/pexels-photo-749114.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                            <p class="free-corner">免费</p>
+                            <img class="collection-icon" src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -214,6 +251,7 @@
         data () {
             return {
                 settingListBscroll: '',
+                contentBscroll: '',
                 form: {},
                 value: '',
                 color1: '',
@@ -241,6 +279,7 @@
         },
         mounted () {
             this.initSettingsListBScroll()
+            this.initContentBScroll()
         },
         methods: {
             initSettingsListBScroll () {
@@ -264,6 +303,35 @@
                         preventDefault: false
                     })
                 })
+            },
+            initContentBScroll () {
+                this.$nextTick(() => {
+                    if (this.contentBscroll) {
+                        this.contentBscroll.refresh()
+                        return
+                    }
+                    const { settingsContentWrap } = this.$refs
+                    if (!settingsContentWrap) {
+                        return
+                    }
+                    this.contentBscroll = new BScroll(settingsContentWrap, {
+                        bounce: false,
+                        click: true,
+                        tap: true,
+                        momentum: false,
+                        probeType: 3,
+                        mouseWheel: {
+                            speed: 20,
+                            invert: false,
+                            easeTime: 0
+                        },
+                        scrollbar: {
+                            fade: false,
+                            interactive: true // 1.8.0 新增
+                        },
+                        preventDefault: false
+                    })
+                })
             }
         },
         beforeRouteEnter (to, from, next) {
@@ -275,8 +343,7 @@
 <style lang="scss" scoped>
     .the-style-view {
         width: 100%;
-        // height: calc(100vh - 100px);
-        // overflow: auto;
+        height: calc(100vh - 100px);
         box-sizing: border-box;
         padding: 0 0 10px;
         display: flex;
@@ -394,6 +461,21 @@
         }
     }
 
+    .settings-content-wrap {
+        width: 100%;
+        height: calc(100% - 288px);
+        overflow: hidden;
+        position: relative;
+    }
+
+    .settings-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
     .look-mask {
         width: 510px;
 
@@ -421,6 +503,20 @@
         }
     }
 
+    .look-more-btn {
+        display: block;
+        margin: 28px auto 30px;
+        width: 168px;
+        height: 50px;
+        background: rgba(255,255,255,1);
+        box-shadow: 0px 0px 30px 0px rgba(232,232,232,0.5);
+        border-radius: 45px;
+        font-size: 18px;
+        font-family: PingFangSC-Regular,PingFang SC;
+        font-weight: 400;
+        color: rgba(46,51,65,1);
+    }
+
     .vip-link {
         width: 510px;
         height: 60px;
@@ -445,6 +541,8 @@
         box-sizing: border-box;
         padding: 20px;
         margin: 10px auto 0;
+        border-radius: 4px;
+        background: #f8fafd;
 
         .settings-header {
             height: 25px;
@@ -487,6 +585,94 @@
         }
     }
 
+    .filter-cate-list {
+        width: 520px;
+        margin-left: 5px;
+    }
+
+    .filter-cate-item {
+        padding: 7px 20px;
+        border-radius: 17px;
+        font-size: 14px;
+        font-family: PingFangSC-Regular,PingFang SC;
+        font-weight: 400;
+        color: rgba(165,165,165,1);
+        line-height: 20px;
+        float: left;
+        margin: 0 10px 10px 0;
+        background: #F2F2F2;
+        cursor: pointer;
+        transition: all .3s;
+
+        &:hover {
+            background: #2E3341;
+            color: #FBFBFB;
+        }
+    }
+
+    .filter-review-list {
+        width: 510px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        clear: both;
+    }
+
+    .filter-review-item {
+        margin-top: 10px;
+        width: 250px;
+        height: 139px;
+        box-sizing: border-box;
+        border: 2px solid transparent;
+        cursor: pointer;
+        position: relative;
+        transition: all .3s;
+
+        &:hover {
+            border: 2px solid rgba(219,177,101,1);
+        }
+
+        .cover {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+
+        .free-corner {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            padding: 1px 7px;
+            background: rgba(25,28,61,0.7);
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: PingFangSC-Regular,PingFang SC;
+            font-weight: 400;
+            color: rgba(255,255,255,1);
+            line-height: 17px;
+        }
+
+        .collection-icon {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            width: 20px;
+            height: 20px;
+            background: rgba(255,255,255,1);
+        }
+    }
+
+    .cutline {
+        width: 550px;
+        height: 10px;
+        background: rgba(248,250,253,1);
+    }
+
+    .style-settings-cutline {
+        margin-top: 30px;
+    }
 </style>
 
 <style lang="scss">
