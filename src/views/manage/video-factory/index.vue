@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="video-review-mask">
-            video review
+            <video-review/>
         </div>
     </div>
 </template>
@@ -34,6 +34,7 @@
     import TheAudio from '@/components/manage/video-factory/the-audio'
     import TheStyle from '@/components/manage/video-factory/the-style'
     import TheFormat from '@/components/manage/video-factory/the-format'
+    import VideoReview from '@/components/manage/video-factory/video-review'
 
     export default {
         components: {
@@ -41,7 +42,8 @@
             TheVideo,
             TheAudio,
             TheStyle,
-            TheFormat
+            TheFormat,
+            VideoReview
         },
         data () {
             return {
